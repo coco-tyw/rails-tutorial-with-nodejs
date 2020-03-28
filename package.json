@@ -2,13 +2,16 @@
   "name": "rails-tutorial-on-nodejs",
   "version": "1.0.0",
   "scripts": {
-    "serve": "node dist/infrastracture/serve.js",
+    "serve": "node dist/infra/serve.js",
     "dev": "NODE_ENV=development nodemon --config ./nodemon.json",
     "tsc": ".\\node_modules\\.bin\\tsc",
     "build": "rimraf dist && tsc -p tsconfig.json --outDir dist"
   },
   "dependencies": {
+    "@types/moment-timezone": "^0.5.13",
     "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.28",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
