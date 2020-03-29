@@ -1,3 +1,6 @@
+import * as command from "@/application/command";
+import { NewErrValidationFailed } from "./error";
+
 export type CreateUser = {
   name: string
   email: string
@@ -10,4 +13,13 @@ export type PutUserEmail = {
 
 export type PutUserPassword = {
   password: string
+}
+
+export function validate(u: CreateUser) {
+  if (u.email === "" || u.name === "") {
+    return NewErrValidationFailed("invalid email")
+  }
+  if (u.password.length < 8) {
+    return NewErrValidationFailed("invalid password")
+  }
 }

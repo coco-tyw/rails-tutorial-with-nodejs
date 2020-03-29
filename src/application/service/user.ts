@@ -7,6 +7,16 @@ export type User = {
   userRepository: model.UserRepository
   micropostRepository: model.MicropostRepository
 }
+
+export function NewUser(
+  userRepository: model.UserRepository, 
+  micropostRepository: model.MicropostRepository): User {
+  return {
+    userRepository,
+    micropostRepository
+  }
+}
+
 export function createUser(u: User, com: command.CreateUser): view.User {
   const user = model.NewUser(com.name, com.email, com.password)
   u.userRepository.create(user)
