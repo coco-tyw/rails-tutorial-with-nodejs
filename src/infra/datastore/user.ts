@@ -1,14 +1,14 @@
 import * as model from '@/domain/model'
 import moment from 'moment'
 
-export function toDomain(): model.User {
-  return {
-    id: 1,
-    name: "a",
-    email: "a",
-    updatedAt: moment(),
-    createdAt: moment()
-  }
+type User = model.User
+
+export function toDomain(u: User): model.User {
+  return u
+}
+
+export function userFromDomain(u: model.User): User {
+  return u
 }
 
 export function NewUserRepository () {
@@ -25,5 +25,5 @@ export function create(u: ReturnType<typeof NewUserRepository>, user: model.User
 }
 
 export function update(u: ReturnType<typeof NewUserRepository>, user: model.User): void {
-  
+
 }

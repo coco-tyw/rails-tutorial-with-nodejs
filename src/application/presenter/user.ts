@@ -1,9 +1,19 @@
 import * as model from '@/domain/model'
+import * as view from '@/application/view'
 
-namespace view {
-  export interface User extends model.User {
+export class UserResolver {
+
+  private _microposts: view.Micropost[]
+
+  constructor(microposts: view.Micropost[]) {
+    this._microposts = microposts
+  }
+  public resolve(user: model.User): view.User {
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      microposts: this._microposts
+    }
   }
 }
-
-// micro post などが入ってきたとき用
-declare function UserFromDomain(user: model.User): view.User
