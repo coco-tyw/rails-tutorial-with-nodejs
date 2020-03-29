@@ -1,6 +1,6 @@
 import express from 'express'
-import router from './router'
 import bodyParser from 'body-parser'
+import * as handler from "@/infra/handler"
 
 const app = express()
 
@@ -8,7 +8,7 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.use('/api', router)
+app.use('/api', handler.router)
 
 app.listen(3000, () => {
   console.log('listening on port 3000')
