@@ -1,7 +1,7 @@
 export interface MicropostRepository {
-  findById(id: string): Micropost
+  // findById(id: string): Micropost
   create(micropost: Micropost): void
-  delete(id: number): void
+  // delete(id: number): void
 }
 
 export type Micropost = {

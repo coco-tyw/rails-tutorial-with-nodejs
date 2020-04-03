@@ -1,7 +1,7 @@
 import router from './router'
-import { getUser, getUsers, postUser, deleteUser } from "./user"
+import { UserHandler } from "./user"
 
 export {
   router,
-  getUser, getUsers, postUser, deleteUser
+  UserHandler
 }

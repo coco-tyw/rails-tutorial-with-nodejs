@@ -1,5 +1,7 @@
-import { User, NewUser } from "./user"
+import { User, UserRepository } from "./user"
+import { Micropost } from "./micropost"
 
 export {
-  User, NewUser
+  User, UserRepository,
+  Micropost
 }

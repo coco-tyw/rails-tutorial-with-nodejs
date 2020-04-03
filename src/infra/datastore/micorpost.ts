@@ -1,6 +1,7 @@
 export class MicropostRepository {
-  readonly client: () => void
-  constructor() {
-    this.client = () => {}
-  } 
+  create = () => {}
+  // readonly client: () => void
+  // constructor() {
+  //   this.client = () => {}
+  // } 
 }

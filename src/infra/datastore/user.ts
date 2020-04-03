@@ -3,12 +3,19 @@ import moment from 'moment'
 
 type User = model.User
 
+
 export class UserRepository {
-  readonly client: () => void
-  constructor() {
-    this.client = () => {}
-  } 
 }
+
+export class UserRepository {
+  // readonly client: () => void
+  // create = () => {}
+  // constructor() {
+  //   this.client = () => {}
+  // } 
+}
+
+
 
 export function toDomain(u: User): model.User {
   return u

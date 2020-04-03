@@ -1,8 +1,8 @@
 export interface UserRepository {
-  findById(id: string): User
-  findByEmail(id: string): User
+  // findById(id: string): User
+  // findByEmail(id: string): User
   create(user: User): void
-  delete(id: number): void
+  // delete(id: number): void
 }
 
 export type User = {
