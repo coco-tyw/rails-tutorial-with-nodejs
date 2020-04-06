@@ -1,5 +1,5 @@
-import { CreateUser, DeleteUser, GetUser, GetUsers } from "./User"
+import User from "./User"
 
 export {
-  CreateUser, DeleteUser, GetUser, GetUsers
+  User
 }

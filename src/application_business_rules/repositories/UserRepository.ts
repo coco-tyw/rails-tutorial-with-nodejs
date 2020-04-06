@@ -35,7 +35,7 @@ export interface UserRepositoryInterface {
   persist(userEntity: entities.UserType): void
   merge(userEntity: entities.UserType): void
   remove(userId: number): void
-  getList(): void
-  get(userId: number): void
+  getList(): Promise<entities.UserType[]>
+  get(userId: number): Promise<entities.UserType>
   getByEmail(email: string): void
 }

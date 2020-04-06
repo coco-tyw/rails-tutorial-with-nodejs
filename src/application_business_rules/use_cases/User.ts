@@ -1,32 +1,36 @@
 import * as repositories from "@/application_business_rules/repositories"
 import * as entities from "@/enterprise_business_rules/entities"
 
-export function CreateUser(
-  name: string,
-  email: string,
-  password: string,
-  ripos: { userRepository: InstanceType<typeof repositories.UserRepository>}
-) {
-  const user = new entities.User(NaN, name, email, password)
-  return ripos.userRepository.persist(user)
-}
+export default class UseCase {
+  private userRepository: repositories.UserRepository
 
-export function DeleteUser(
-  userId: number,
-  ripos: { userRepository: InstanceType<typeof repositories.UserRepository>}
-) {
-  return ripos.userRepository.remove(userId)
-}
+  constructor(ur: repositories.UserRepository) {
+    this.userRepository = ur
+  }
 
-export function GetUsers(
-  ripos: { userRepository: InstanceType<typeof repositories.UserRepository>}
-) {
-  return ripos.userRepository.getList()
-}
-
-export function GetUser(
-  userId: number,
-  ripos: { userRepository: InstanceType<typeof repositories.UserRepository>}
-) {
-  return ripos.userRepository.get(userId)
+  createUser(
+    name: string,
+    email: string,
+    password: string,
+  ) {
+    const user = new entities.User(NaN, name, email, password)
+    return this.userRepository.persist(user)
+  }
+  
+  deleteUser(
+    userId: number,
+  ) {
+    return this.userRepository.remove(userId)
+  }
+  
+  getUsers(
+  ) {
+    return this.userRepository.getList()
+  }
+  
+  getUser(
+    userId: number,
+  ) {
+    return this.userRepository.get(userId)
+  }
 }
