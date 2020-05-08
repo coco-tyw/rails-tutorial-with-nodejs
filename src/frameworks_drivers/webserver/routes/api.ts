@@ -1,7 +1,7 @@
 import express = require('express')
-let router = express.Router()
 import * as controllers from '@/interface_adapters/controllers'
 
+const router = express.Router()
 const usersController = new controllers.UsersController()
 
 router.get('/', async (req: express.Request, res: express.Response) => {
