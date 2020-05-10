@@ -1,4 +1,4 @@
-import { UserEntity } from "@/enterprise_business_rules/entities/types"
+import { UserEntity } from "@/domain/models/types"
 
 export interface UserRepository {
   persist(userEntity: UserEntity): void

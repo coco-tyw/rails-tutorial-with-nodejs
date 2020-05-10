@@ -1,6 +1,6 @@
-import { UserRepository } from "@/application_business_rules/types"
-import { User } from "@/enterprise_business_rules/entities"
-import { UserEntity } from "@/enterprise_business_rules/entities/types"
+import { UserRepository } from "@/application/types"
+import { User } from "@/domain/models"
+import { UserEntity } from "@/domain/models/types"
 
 export default class UserRepositoryInMemory implements UserRepository {
 

@@ -1,4 +1,4 @@
-import { User } from "@/enterprise_business_rules/entities"
+import { User } from "@/domain/models"
 import { UserRepository } from "./types"
 
 export default class UseCase {

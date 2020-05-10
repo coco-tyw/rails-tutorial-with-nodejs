@@ -1,4 +1,4 @@
-import { User } from "@/enterprise_business_rules/entities";
+import { User } from "@/domain/models";
 
 export default class UserSerializer {
   static _serialize(user: User) {

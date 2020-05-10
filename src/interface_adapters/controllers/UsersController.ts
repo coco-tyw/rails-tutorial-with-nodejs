@@ -1,5 +1,5 @@
 import express from 'express'
-import { User as UserUseCase } from '@/application_business_rules'
+import { User as UserUseCase } from '@/application'
 import UserRepositoryInMemory from '@/interface_adapters/storage/UserRepositoryInMemory'
 import * as serializers from '@/interface_adapters/serializers'
 
