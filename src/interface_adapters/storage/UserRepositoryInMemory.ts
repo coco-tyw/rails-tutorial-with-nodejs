@@ -1,9 +1,11 @@
-import * as entities from "@/enterprise_business_rules/entities";
+import { UserRepository } from "@/application_business_rules/types"
+import { User } from "@/enterprise_business_rules/entities"
+import { UserEntity } from "@/enterprise_business_rules/entities/types"
 
-export default class UserRepositoryInMemory {
+export default class UserRepositoryInMemory implements UserRepository {
 
   private index: number
-  private data: { [n: number]: entities.UserType }
+  private data: { [n: number]: UserEntity }
   constructor() {
     this.index = 1
     this.data = {}
@@ -11,8 +13,8 @@ export default class UserRepositoryInMemory {
   }
   
   _initializeRepository() {
-    const john = new entities.User(NaN, 'John', 'john@mail.com', 'QWRASDZXC')
-    const jane = new entities.User(NaN, 'Jane', 'jane@mail.com', 'POILKJMNB')
+    const john = new User(NaN, 'John', 'john@mail.com', 'QWRASDZXC')
+    const jane = new User(NaN, 'Jane', 'jane@mail.com', 'POILKJMNB')
     this.persist(john).then(() => this.persist(jane))
   }
 
@@ -20,7 +22,7 @@ export default class UserRepositoryInMemory {
     return Object.keys(this.data).map((key: string) => this.data[Number(key)])
   }
 
-  persist(user: entities.UserType) {
+  persist(user: UserEntity) {
     const row = Object.assign({}, user)
     const rowId = this.index++
     row.id = rowId
@@ -28,7 +30,7 @@ export default class UserRepositoryInMemory {
     return Promise.resolve(row)
   }
 
-  merge(user: entities.UserType) {
+  merge(user: UserEntity) {
     let row = this.data[user.id]
     Object.assign(row, user)
     return Promise.resolve(row)

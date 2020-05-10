@@ -1,10 +1,10 @@
-import * as repositories from "@/application_business_rules/repositories"
-import * as entities from "@/enterprise_business_rules/entities"
+import { User } from "@/enterprise_business_rules/entities"
+import { UserRepository } from "./types"
 
 export default class UseCase {
-  private userRepository: repositories.UserRepository
+  private userRepository: UserRepository
 
-  constructor(ur: repositories.UserRepository) {
+  constructor(ur: UserRepository) {
     this.userRepository = ur
   }
 
@@ -13,7 +13,7 @@ export default class UseCase {
     email: string,
     password: string,
   ) {
-    const user = new entities.User(NaN, name, email, password)
+    const user = new User(NaN, name, email, password)
     return this.userRepository.persist(user)
   }
   

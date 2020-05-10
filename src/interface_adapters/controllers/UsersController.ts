@@ -1,13 +1,13 @@
 import express from 'express'
-import * as use_case from '@/application_business_rules/use_cases'
-import * as repositories from '@/application_business_rules/repositories'
+import { User as UserUseCase } from '@/application_business_rules'
 import UserRepositoryInMemory from '@/interface_adapters/storage/UserRepositoryInMemory'
 import * as serializers from '@/interface_adapters/serializers'
+
+const userUseCase = new UserUseCase(new UserRepositoryInMemory())
 
 export default class UsersController {
 
   private static userSerializer = new serializers.UserSerializer()
-  private static userUseCase = new use_case.User(new repositories.UserRepository(new UserRepositoryInMemory()))
 
   constructor() {
   }
@@ -17,7 +17,7 @@ export default class UsersController {
   }
 
   async getUsers(req: express.Request, res: express.Response) {
-    const users = await UsersController.userUseCase.getUsers()
+    const users = await userUseCase.getUsers()
     if (!users) {
       return res.send('<h1>404 not found</h1>')
     }
@@ -26,7 +26,7 @@ export default class UsersController {
 
   async getUser(req: express.Request, res: express.Response) {
     const { id } = req.params
-    const user = await UsersController.userUseCase.getUser(Number(id))
+    const user = await userUseCase.getUser(Number(id))
     if (!user) {
       return res.send('<h1>404 not found</h1>')
     }

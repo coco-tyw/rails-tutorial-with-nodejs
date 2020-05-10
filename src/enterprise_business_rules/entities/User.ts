@@ -1,4 +1,6 @@
-export class User {
+import { UserEntity } from './types'
+
+export default class User implements UserEntity {
   id: number
   name: string
   email: string
@@ -15,11 +17,4 @@ export class User {
     this.email = email
     this.passwordHash = passwordHash
   }
-}
-
-export type UserType = {
-  id: number
-  name: string
-  email: string
-  passwordHash: string
 }
